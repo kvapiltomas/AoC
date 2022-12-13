@@ -1,18 +1,17 @@
-from pathlib import Path
-
-PATH = '/2022/inputs/01'
-
 def main():
-    with open(PATH, 'r') as f:
-        elf_meals = f.read().split('\n\n')
+    with open('/Users/tomaskvapil/git/AoC/AoC/2022/inputs/01', 'r') as f:
+        food_list = f.read().split('\n\n')
 
-    elf_cals = []    
-    for elf in elf_meals:
-        calories = sum(map(int, elf.splitlines()))
-        elf_cals.append(calories)
-    print(f'task 1: {max(elf_cals)}')    
+    meals = []
+    for food in food_list:
+        calories = sum(map(int, food.split('\n')))
+        meals.append(calories)
+        
+    part1 = max(meals)
+    print(f'Most calories carried by elf: {part1}')
 
-    print(f'task 2: {sum(sorted(elf_cals)[-3:])}')
+    part2 = sum(sorted(meals)[-3:])
+    print(f'Total calories carried by the top three elves: {part2}')
 
 if __name__ == '__main__':
     main()
